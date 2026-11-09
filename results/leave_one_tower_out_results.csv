@@ -1,0 +1,5 @@
+held_out_tower,parameter,selected_value,held_out_criteria_met,held_out_retention,note
+J_T01,min_points_per_band,500,True,0.9722222222222222,
+J_T02,min_points_per_band,500,True,1.0,
+Q_T01,min_points_per_band,200,False,1.0,
+Y_T01,min_points_per_band,200,False,1.0,

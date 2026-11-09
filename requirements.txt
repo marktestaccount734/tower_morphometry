@@ -1,0 +1,8 @@
+﻿laspy==2.7.0
+lazrs==0.8.2
+matplotlib==3.11.2
+numpy==2.5.4
+pandas==3.1.1
+pytest==9.2.0
+PyYAML==6.0.3
+scipy==1.18.1

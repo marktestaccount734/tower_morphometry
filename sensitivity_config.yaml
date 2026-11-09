@@ -1,0 +1,79 @@
+# Sensitivity analysis configuration.
+# Candidate values are from the project specification. Provisional values are the
+# starting point only, not validated thresholds. Every result records the value used.
+
+project:
+  root: ..                        # relative to this folder
+  crs: EPSG:32649
+  random_seed: 42
+  n_subsample_reps: 100
+
+towers:
+  # M_T01 is excluded from all analyses (user decision, 6 Nov 2026).
+  # Q_T01 uses the 20% seeded subsample for all metrics (agreed).
+  J_T01:
+    cloud: data/segmented/J_T01/J_T01.las
+    site: J
+    base_reference_m: 807.65
+    base_reference_type: visual_clip_floor
+    base_reference_status: usable
+  J_T02:
+    cloud: data/segmented/J_T02/J_T02.las
+    site: J
+    base_reference_m: 888.00
+    base_reference_type: visual_estimate_single_observer_side_view
+    base_reference_status: approximate
+    # Bands whose lower edge is below this elevation are excluded from representative
+    # sections (user decision 9 Nov 2026: treated as canopy/skirt, not rock).
+    exclude_below_base_m: 888.00
+  Q_T01:
+    cloud: data/segmented/Q_T01/Q_T01_facet_sub20_seed42.las
+    site: Q
+    base_reference_m: 736.96
+    base_reference_type: visual_estimate_single_observer_side_view
+    base_reference_status: approximate
+  Y_T01:
+    cloud: data/segmented/Y_T01/Y_T01.las
+    site: Y
+    base_reference_m: 938.74
+    base_reference_type: visual_estimate_single_observer_side_view
+    base_reference_status: approximate
+
+provisional_values:               # used for the baseline run
+  band_thickness_m: 2.0
+  min_points_per_band: 200
+  min_angular_coverage_deg: 180
+  elongation_threshold: 1.2
+  consecutive_bands: 3
+
+candidates:
+  band_thickness_m: [1.0, 2.0, 5.0]
+  min_points_per_band: [50, 100, 200, 500, 1000]
+  min_angular_coverage_deg: [90, 120, 180, 240, 270]
+  elongation_threshold: [1.05, 1.10, 1.20, 1.30, 1.50]
+  consecutive_bands: [1, 2, 3, 4, 5]
+  subsample_sizes: [50, 100, 200, 500, 1000]
+
+representative_section:           # approved 6 Nov 2026
+  min_points: 1000
+  min_angular_coverage_deg: 180
+  require_single_component: true
+
+stability_criteria:               # to be applied before any parameter is selected
+  max_abs_bias_fraction: 0.05     # |mean subsample area - full area| / full area
+  max_cv_fraction: 0.10           # coefficient of variation across seeded subsamples
+  max_azimuth_axial_sd_deg: 15.0  # axial SD across subsamples
+  min_band_retention: 0.80
+  min_towers_meeting_criteria: 3  # of 4 (cross-tower consistency)
+
+rock_base:
+  colour_rule: excess_green         # ExG = 2G - R - B on 8-bit RGB
+  exg_threshold: 20
+  green_ratio: 1.08
+  rock_share_thresholds: [0.5, 0.7]  # sensitivity; colour alone is not evidence of bedrock
+  description: "Colour rule is heuristic. Detections are reported as stability, not validation, except J_T01."
+
+outputs:
+  results_dir: results
+  figures_dir: figures
+  log_file: logs/run_log.jsonl

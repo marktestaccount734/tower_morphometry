@@ -1,0 +1,5 @@
+tower,source_file,points,crs,x_extent_m,y_extent_m,z_min_m,z_max_m,bbox_points_per_m2,rgb_bit_depth,classification,confidence_attribute,stored_normals,vertical_datum
+J_T01,data/segmented/J_T01/J_T01.las,535224,EPSG:32649,44.81,65.1,807.65,949.22,183.5,16 (stored); 8-bit after >> 8,all unclassified (0),Metashape confidence (supplementary QC),"normal x/y/z (source fields, excluded)",unknown
+J_T02,data/segmented/J_T02/J_T02.las,438885,EPSG:32649,32.03,73.8,881.35,995.42,185.7,16 (stored); 8-bit after >> 8,all unclassified (0),Metashape confidence (supplementary QC),"normal x/y/z (source fields, excluded)",unknown
+Q_T01,data/segmented/Q_T01/Q_T01_facet_sub20_seed42.las,687064,EPSG:32649,56.46,72.89,735.56,937.82,167.0,16 (stored); 8-bit after >> 8,all unclassified (0),Metashape confidence (supplementary QC),"normal x/y/z (source fields, excluded)",unknown
+Y_T01,data/segmented/Y_T01/Y_T01.las,499978,EPSG:32649,39.41,27.68,937.33,1025.47,458.3,16 (stored); 8-bit after >> 8,all unclassified (0),Metashape confidence (supplementary QC),"normal x/y/z (source fields, excluded)",unknown
